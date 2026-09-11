@@ -10,13 +10,20 @@ const DetalleCliente = () => {
 
   const [cliente, setCliente] = useState(null);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
     clientesService
       .obtenerClientePorId(id)
-      .then((data) => setCliente(data))
-      .catch(() => setError(true));
+      .then((data) => {
+        setCliente(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
   }, [id]);
 
   const eliminarCliente = async () => {
@@ -36,7 +43,7 @@ const DetalleCliente = () => {
     return <h2>Error al cargar el cliente.</h2>;
   }
 
-  if (!cliente) {
+  if (loading) {
     return <h2>Cargando cliente...</h2>;
   }
 
