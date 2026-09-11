@@ -1,22 +1,13 @@
 import '../css/dashboard.css'
-import useAutorizaciones from '../hooks/useAutorizaciones'
-import Login from './Login'
 
 const Dashboard = () => {
-  const { admin } = useAutorizaciones()
-
+  
   return (
     <div className="dashboard">
 
       <h1>Panel de Control de Clientes</h1>
 
-      {!admin ? (
-        <div className="dashboard-login">
-          <h3>Bienvenido al sistema</h3>
-          <p>Ingrese sus credenciales para acceder.</p>
-          <Login />
-        </div>
-      ) : (
+      
         <>
           <div className="user-card">
             <h3>Usuario conectado</h3>
@@ -44,7 +35,7 @@ const Dashboard = () => {
           </div>
 
         </>
-      )}
+      
 
     </div>
   )
