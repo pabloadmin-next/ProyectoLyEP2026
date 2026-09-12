@@ -3,6 +3,11 @@ import useAutorizaciones from '../hooks/useAutorizaciones'
 
 const Dashboard = () => {
   const { admin } = useAutorizaciones()
+  const usuarios = autorizacionesServices.obtenerUsuarios()
+
+  const cantidadGerencia = usuarios.filter(usuario => usuario.sector === 'Gerencia').length
+
+  const cantidadSoporte = usuarios.filter(usuario => usuario.sector === 'Soporte').length
 
   return (
     <div className="dashboard">
@@ -22,17 +27,17 @@ const Dashboard = () => {
 
             <div className="dashboard-card">
               <h3>Clientes</h3>
-              <p>10</p>
+              <p>{usuarios.length}</p>
             </div>
 
             <div className="dashboard-card">
               <h3>Gerencia</h3>
-              <p>3</p>
+              <p>{cantidadGerencia}</p>
             </div>
 
             <div className="dashboard-card">
               <h3>Soporte</h3>
-              <p>3</p>
+              <p>{cantidadSoporte}</p>
             </div>
           </div>
 
