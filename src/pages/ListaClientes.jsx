@@ -25,6 +25,9 @@ const ListaClientes = () => {
 
   const clientesFiltrados = clientes.filter(
     (cliente) =>
+      cliente.name.firstname
+        .toLowerCase()
+        .includes(busqueda.toLowerCase()) ||
       cliente.name.lastname
         .toLowerCase()
         .includes(busqueda.toLowerCase()) ||

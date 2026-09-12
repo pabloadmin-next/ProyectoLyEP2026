@@ -2,11 +2,12 @@ import '../css/detallecliente.css'
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import clientesService from "../services/clientesService";
+import useAutorizaciones from "../hooks/useAutorizaciones";
 
 const DetalleCliente = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const role = localStorage.getItem("role");
+  const { admin } = useAutorizaciones();
 
   const [cliente, setCliente] = useState(null);
   const [error, setError] = useState(false);
@@ -50,7 +51,7 @@ const DetalleCliente = () => {
   return (
     <div className="detalle-cliente">
       <h1>Ficha del Cliente</h1>
-      <p>Rol actual: {role}</p>
+      <p>Rol actual: {admin?.sector}</p>
 
       {mensaje && <p className='mensaje-eliminado'>{mensaje}</p>}
 
@@ -99,7 +100,7 @@ const DetalleCliente = () => {
         <strong>Contraseña:</strong> {cliente.password}
       </p>
 
-      {role?.trim() === "Gerencia" && (
+      {admin?.sector === "Gerencia" && (
         <button className='btn-eliminar' onClick={eliminarCliente}>
           Eliminar Cliente
         </button>
