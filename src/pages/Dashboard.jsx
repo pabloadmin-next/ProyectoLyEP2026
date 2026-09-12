@@ -1,7 +1,9 @@
 import '../css/dashboard.css'
+import useAutorizaciones from '../hooks/useAutorizaciones'
 
 const Dashboard = () => {
-  
+  const { admin } = useAutorizaciones()
+
   return (
     <div className="dashboard">
 
