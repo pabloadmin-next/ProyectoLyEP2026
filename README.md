@@ -19,6 +19,14 @@ El flujo general es:
 5. Hacé commits semánticos frecuentes
 6. Abrí un Pull Request desde tu fork hacia este repo
 
+## Configuración del entorno
+
+Este proyecto necesita un archivo `.env` en la raíz con los usuarios de prueba para poder iniciar sesión.
+
+1. Copiar `.env.example` y renombrar la copia a `.env`.
+2. Completar `VITE_MOCK_USERS` con el array de usuarios de prueba (email, password, nombre, sector).
+3. El archivo `.env` no se sube al repositorio (está en `.gitignore`).
+
 ## Licencia de Uso
 
 El código fuente está bajo licencia MIT.

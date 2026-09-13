@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AutorizacionesContext } from '../context/AutorizacionesContext'
+import { AutorizacionesContext } from '../context/AutorizacionesContextObject'
 const useAutorizaciones = () => {
   return useContext(AutorizacionesContext)
 }
