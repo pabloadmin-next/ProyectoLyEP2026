@@ -1,41 +1,15 @@
-const usuarios = [
-  {
-    email: 'antonella@gmail.com',
-    password: 'Admin123',
-    nombre: 'Antonella',
-    sector: 'Soporte'
-  },
-  {
-    email: 'jimena@gmail.com',
-    password: 'Admin123',
-    nombre: 'Jimena',
-    sector: 'Gerencia'
-  },
-  {
-    email: 'maia@gmail.com',
-    password: 'Admin123',
-    nombre: 'Maia',
-    sector: 'Gerencia'
-  },
-  {
-    email: 'abril@gmail.com',
-    password: 'Admin123',
-    nombre: 'Abril',
-    sector: 'Soporte'
-  },
-  {
-    email: 'guadalupe@gmail.com',
-    password: 'Admin123',
-    nombre: 'Guadalupe',
-    sector: 'Soporte'
-  },
-  {
-    email: 'lourdes@gmail.com',
-    password: 'Admin123',
-    nombre: 'Lourdes',
-    sector: 'Gerencia'
-  }
-]
+// Usuarios de prueba (mock). Se leen desde una variable de entorno (.env)
+// en vez de estar hardcodeados en el código fuente, para no exponer
+// credenciales en el repositorio ni en el historial de Git.
+const usuarios = JSON.parse(import.meta.env.VITE_MOCK_USERS || '[]')
+
+if (usuarios.length === 0) {
+  console.warn(
+    'No se encontraron usuarios mock. Verifique que exista un archivo .env ' +
+    'con la variable VITE_MOCK_USERS (ver .env.example).'
+  )
+}
+
 const login = (email, password, sector) => {
   return usuarios.find(
     usuario =>
