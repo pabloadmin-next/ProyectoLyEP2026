@@ -1,22 +1,21 @@
 import '../css/dashboard.css'
 import useAutorizaciones from '../hooks/useAutorizaciones'
-import Login from './Login'
+import autorizacionesServices from '../services/autorizacionesServices'
 
 const Dashboard = () => {
   const { admin } = useAutorizaciones()
+  const usuarios = autorizacionesServices.obtenerUsuarios()
+
+  const cantidadGerencia = usuarios.filter(usuario => usuario.sector === 'Gerencia').length
+
+  const cantidadSoporte = usuarios.filter(usuario => usuario.sector === 'Soporte').length
 
   return (
     <div className="dashboard">
 
       <h1>Panel de Control de Clientes</h1>
 
-      {!admin ? (
-        <div className="dashboard-login">
-          <h3>Bienvenido al sistema</h3>
-          <p>Ingrese sus credenciales para acceder.</p>
-          <Login />
-        </div>
-      ) : (
+      
         <>
           <div className="user-card">
             <h3>Usuario conectado</h3>
@@ -29,22 +28,22 @@ const Dashboard = () => {
 
             <div className="dashboard-card">
               <h3>Clientes</h3>
-              <p>10</p>
+              <p>{usuarios.length}</p>
             </div>
 
             <div className="dashboard-card">
               <h3>Gerencia</h3>
-              <p>3</p>
+              <p>{cantidadGerencia}</p>
             </div>
 
             <div className="dashboard-card">
               <h3>Soporte</h3>
-              <p>3</p>
+              <p>{cantidadSoporte}</p>
             </div>
           </div>
 
         </>
-      )}
+      
 
     </div>
   )

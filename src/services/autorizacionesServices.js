@@ -18,7 +18,9 @@ const login = (email, password, sector) => {
       usuario.sector === sector
   )
 }
+const obtenerUsuarios = () => usuarios
 
 export default {
-  login
+  login,
+  obtenerUsuarios
 }

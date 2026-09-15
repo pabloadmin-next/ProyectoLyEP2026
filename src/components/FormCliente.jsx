@@ -93,7 +93,7 @@ const FormCliente = () => {
 
             <Form onSubmit={manejarSubmit}>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3" controlId="nombre">
 
                     <Form.Label>Nombre</Form.Label>
 
@@ -107,7 +107,7 @@ const FormCliente = () => {
 
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3" controlId="email">
 
                     <Form.Label>Email</Form.Label>
 
@@ -121,7 +121,7 @@ const FormCliente = () => {
 
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3" controlId="telefono">
 
                     <Form.Label>Teléfono</Form.Label>
 
@@ -135,7 +135,7 @@ const FormCliente = () => {
 
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3" controlId="ciudad">
 
                     <Form.Label>Ciudad</Form.Label>
 
